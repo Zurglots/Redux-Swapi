@@ -10,6 +10,12 @@ export const FETCH_DATA_ERROR = "FETCH_DATA_ERROR";
 
 export const getData = char => dispatch => {
   dispatch({ type: FETCH_DATA_START });
+  axios
+    .get("https://swapi.co/api/people")
+    .then(res => {
+      dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
+    })
+    .catch(err => dispatch({ type: FETCH_DATA_ERROR }));
 };
 
 // our action creator will be a function that returns a function
