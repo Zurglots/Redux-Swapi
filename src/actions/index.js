@@ -9,10 +9,12 @@ export const FETCH_DATA_ERROR = "FETCH_DATA_ERROR";
 // one for fetching, one for success and one for failure
 
 export const getData = char => dispatch => {
+  console.log(res.data);
   dispatch({ type: FETCH_DATA_START });
   axios
     .get("https://swapi.co/api/people")
     .then(res => {
+      console.log(res.data);
       dispatch({ type: FETCH_DATA_SUCCESS, payload: res.data });
     })
     .catch(err => dispatch({ type: FETCH_DATA_ERROR }));
