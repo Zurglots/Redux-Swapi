@@ -11,11 +11,13 @@ class CharacterListView extends React.Component {
   }
 
   componentDidMount() {
-    // call our action
+    console.log("in CDM");
+    this.props.getData();
   }
 
   render() {
-    if (this.props.fetching) {
+    if (this.props.isLoading) {
+      return <h2> Loading data! </h2>;
       // return something here to indicate that you are fetching data
     }
     return (
@@ -25,7 +27,13 @@ class CharacterListView extends React.Component {
     );
   }
 }
+// console.log(state);
 
+const mapStateToProps = state => ({
+  characters: state.charsReducer.characters,
+  isLoading: state.charsReducer.isLoading
+  // error: state.charsReducer.error
+});
 // our mapStateToProps needs to have two properties inherited from state
 // the characters and the fetching boolean
 export default connect(
