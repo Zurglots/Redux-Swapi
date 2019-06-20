@@ -19,8 +19,8 @@ export const charsReducer = (state = initialState, action) => {
     case FETCH_DATA_START:
       return {
         ...state,
-        error: null,
-        isLoading: true
+        isLoading: true,
+        error: null
       };
     case FETCH_DATA_SUCCESS:
       return {
